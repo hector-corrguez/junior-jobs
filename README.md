@@ -20,3 +20,5 @@ Eventually, these are the key features that the application is meant to have:
 
 It's not like I'm one to need a work visa, but I do feel like there's a lot of interest now to get a job that provide's it, but no tools.
 
+##Current status
+We are working on it.
