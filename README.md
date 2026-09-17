@@ -18,3 +18,5 @@ Eventually, these are the key features that the application is meant to have:
 
     -In the future I would love this to also have a feature so you can get advise on which roles you should be looking for based on your Skills.
 
+It's not like I'm one to need a work visa, but I do feel like there's a lot of interest now to get a job that provide's it, but no tools.
+
