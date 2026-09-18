@@ -20,21 +20,48 @@ const jobs = [
 ];
 
 const jobList = document.querySelector("#job-list");
+const searchInput = document.querySelector("#job-search");
 
-jobs.forEach(function (job) {
-    const article = document.createElement("article");
+function renderJobs(jobsToRender) {
+    jobList.innerHTML = "";
 
-    article.innerHTML = `
-        <h3>${job.title}</h3>
-        <p>${job.company}</p>
-        <p>${job.location}</p>
-        <button data-job-id="${job.id}">View Job</button>
-    `;
+    if (jobsToRender.length === 0) {
+    jobList.innerHTML = "<p>No jobs found.</p>";
+    return;
+}
 
-    jobList.appendChild(article);
-    const button = article.querySelector("button");
+    jobsToRender.forEach(function (job) {
+        const article = document.createElement("article");
 
-    button.addEventListener("click", function () {
-    alert(`You selected job ${job.id}: ${job.title}`);
+        article.innerHTML = `
+            <h3>${job.title}</h3>
+            <p>${job.company}</p>
+            <p>${job.location}</p>
+            <button data-job-id="${job.id}">View Job</button>
+        `;
+
+        jobList.appendChild(article);
+
+        const button = article.querySelector("button");
+
+        button.addEventListener("click", function () {
+            alert(`You selected job ${job.id}: ${job.title}`);
+        });
     });
+}
+
+renderJobs(jobs);
+
+searchInput.addEventListener("input", function () {
+    const searchTerm = searchInput.value.toLowerCase();
+
+    const filteredJobs = jobs.filter(function (job) {
+        return (
+            job.title.toLowerCase().includes(searchTerm) ||
+            job.company.toLowerCase().includes(searchTerm) ||
+            job.location.toLowerCase().includes(searchTerm)
+        );
+    });
+
+    renderJobs(filteredJobs);
 });
